@@ -24,10 +24,10 @@ export const PlayerControl = ({ disabled, player,setStop}) => {
   const handlePlay = useCallback(() => {
     player && player.requestPlay()
     setStop(true);
-
   }, [
     player,
   ]);
+  
 
   const handlePause = useCallback(() => {
     player && player.requestPause();

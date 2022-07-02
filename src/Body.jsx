@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo, useRef } from "react";
 import { Player } from "textalive-app-api";
 import "./index.css"
 import { PlayerControl } from "./PlayerControl";
+import Three from "./three/sample";
 
 // 歌詞サイズ
 const defaultFontSize = 30;
@@ -21,7 +22,7 @@ export const Body = () => {
     const [darkMode, setDarkMode] = useState(false);
     const [mediaElement, setMediaElement] = useState(null);
     const [visible,setVisible] = useState(false);
-    const[stopsong,setStop] = useState(true);
+    const[stopsong,setStop] = useState(false);
 //   同じ結果を返す処理はメモ化してパフォーマンスを上げる
   const div = useMemo(() => <div className="media" ref={setMediaElement} />, []);
 
@@ -178,11 +179,12 @@ export const Body = () => {
         </div>
         :
         <div className="stop">
-          aaa
+          Stop...
         </div>
         }
       </div>
       {div}
+      <Three/>
     </>
   );
 };
