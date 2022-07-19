@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect } from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import { PlayerSeekbar } from "textalive-react-api";
 
 
@@ -38,13 +38,13 @@ export const PlayerControl = ({ disabled, player,setStop}) => {
   const handleStop = useCallback(() =>{
     player && player.requestStop();
     setStop(false);
+
   }, [
     player,
   ]);
 
   // 曲を変える
   useEffect(()=>{    
-    handleStop();
         let beat = 4086301;
         let chord = 2221797;
         let repetitiveSegment =  2247682;
@@ -121,17 +121,15 @@ export const PlayerControl = ({ disabled, player,setStop}) => {
   return (
     <>
       <div className="control">
-        <Button
-          content={status !== "play" ? "再生" : "一時停止"}
+        <Button 
+        icon={status !== "play" ? "play" : "pause"}
           onClick={status !== "play" ? handlePlay : handlePause}
           size="small"
           disabled={disabled}
-          color="red"
-          basic
         />
 
         <Button
-          content="停止"
+          icon="step backward"
           onClick={handleStop}
           size="small"
           disabled={disabled || status === "stop"}
