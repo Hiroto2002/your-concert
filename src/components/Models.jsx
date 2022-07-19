@@ -1,7 +1,6 @@
-
 import { Canvas } from '@react-three/fiber'
 import { useState, useRef, Suspense, useMemo } from 'react'
-import Model from '../Zuboooooora'
+import Model from '../Miku'
 import "../index.css"
 import { useFrame } from '@react-three/fiber'
 
@@ -34,7 +33,7 @@ export default function Models({segment}) {
         <>
             <Suspense fallback={null}>
                 <mesh ref={ref}>
-                {/* <Model position={[0,0,2]} rotation={[1,Math.PI,0]}/>      */}
+                <Model position={[0,-0.13,9]} rotation={[0,0,0]} scale={0.02}/>     
                 </mesh>  
             </Suspense>
         </>

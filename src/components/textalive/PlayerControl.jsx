@@ -1,5 +1,9 @@
+/**
+ * textaliveの操作
+ */
+
 import React, { useCallback, useState, useEffect } from "react";
-import { Button, Icon } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import { PlayerSeekbar } from "textalive-react-api";
 
 
@@ -20,7 +24,7 @@ export const PlayerControl = ({ disabled, player,setStop}) => {
     return () => player.removeListener(listener);
   }, [player]);
 
-// playerが変化したとき
+
   const handlePlay = useCallback(() => {
     player && player.requestPlay()
     setStop(true);
@@ -35,6 +39,7 @@ export const PlayerControl = ({ disabled, player,setStop}) => {
   }, [
     player,
   ]);
+
   const handleStop = useCallback(() =>{
     player && player.requestStop();
     setStop(false);
@@ -99,6 +104,7 @@ export const PlayerControl = ({ disabled, player,setStop}) => {
             lyric = 53749;
             lyricDiff = 7085;
             break;
+        default:
       }
 
       player.createFromSongUrl(songlist,{
@@ -114,6 +120,7 @@ export const PlayerControl = ({ disabled, player,setStop}) => {
       });    
   },[songlist])
   
+  // 選択された曲を持ってくる
   const handleChange = (e) =>{
     setList(e.target.value)
   }

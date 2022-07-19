@@ -1,18 +1,14 @@
-import React, { useEffect, useState, useMemo, useRef } from "react";
-import { Player } from "textalive-app-api";
-import Models from "./components/Models";
-import "./index.css"
-import { PlayerControl } from "./PlayerControl";
-import Three from "./three/sample";
-import Button from "semantic-ui-react/dist/commonjs/elements/Button";
+/**
+ * Text Alive App API Reactをつかったサンプルコードを参考にさせていただきました。
+ * 主にテキストアライブの処理をする
+ */
 
-// 歌詞サイズ
-const defaultFontSize = 30;
-// 歌詞色
-const defaultColor = "#fff";
-// 歌詞フォント
-const sansSerif = `"Hiragino Kaku Gothic Pro", "游ゴシック体", "Yu Gothic", YuGothic, Meiryo, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif`;
-const serif = `"Times New Roman", YuMincho, "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif`;
+import React, { useEffect, useState, useMemo} from "react";
+import { Player } from "textalive-app-api";
+import "./index.css"
+import { PlayerControl } from "./components/textalive/PlayerControl";
+import Three from "./components/three/Three";
+import Button from "semantic-ui-react/dist/commonjs/elements/Button";
 
 export const Body = () => {
     const [player, setPlayer] = useState(null);
@@ -26,6 +22,8 @@ export const Body = () => {
     const[penlight,setPenlight] = useState(1);
     const[penlight_color,setColor]=useState("#42ff00");
     const[startlylic,setStart]=useState(false);
+    const[cheerstart,setCheerstart]=useState(false);
+    const[cheerend,setCheerend]=useState(false);
     
 //   同じ結果を返す処理はメモ化してパフォーマンスを上げる
   const div = useMemo(() => <div className="media" ref={setMediaElement} />, []);
@@ -42,37 +40,6 @@ export const Body = () => {
       app: {
         // トークンは https://developer.textalive.jp/profile で取得したものを使う
         token: "gToYZLXch4mgq81a",
-        // parameters: [
-        //   {
-        //     title: "フォントの種類",
-        //     name: "fontFamily",
-        //     className: "Select",
-        //     params: [
-        //       [serif, "明朝体"],
-        //       [sansSerif, "ゴシック体"],
-        //     ],
-        //     initialValue: sansSerif,
-        //   },
-        //   {
-        //     title: "フォントサイズ",
-        //     name: "fontSize",
-        //     className: "Slider",
-        //     params: [0, 100],
-        //     initialValue: defaultFontSize,
-        //   },
-        //   {
-        //     title: "テキスト色",
-        //     name: "color",
-        //     className: "Color",
-        //     initialValue: defaultColor,
-        //   },
-        //   {
-        //     title: "ダークモード",
-        //     name: "darkMode",
-        //     className: "Check",
-        //     initialValue: false,
-        //   },
-        // ],
       },
       mediaElement,
     });
@@ -81,7 +48,6 @@ export const Body = () => {
 //  そのイベント（onAppReady , onVideoReadyなど）になった際に対応する関数を実行。
     const playerListener = {
         // onAppReady:初期化されたプレイヤーが最初に呼ぶイベント
-          
         onAppReady: (app) => {
           console.log("--- [app] initialized as TextAlive app ---");
           console.log("managed:", app.managed);
@@ -105,22 +71,7 @@ export const Body = () => {
 
         setApp(app);
         },
-      // onAppParameterUpdate: (name, value) => {
-      //   console.log(`[app] parameters.${name} update:`, value);
-      //   if (name === "fontFamily") {
-      //     setFontFamily(value);
-      //   }
-      //   if (name === "fontSize") {
-      //     setFontSize(value);
-      //   }
-      //   if (name === "color") {
-      //     const color = value;
-      //     setColor(`rgb(${color.r}, ${color.g}, ${color.b})`);
-      //   }
-      //   if (name === "darkMode") {
-      //     setDarkMode(!!value);
-      //   }
-      // },
+
       // 楽曲情報読み込み完了
       onVideoReady: () => {
         console.log("--- [app] video is ready ---");
@@ -131,8 +82,11 @@ export const Body = () => {
         console.log("player.data.songMap:", p.data.songMap);
         let c = p.video.firstPhrase;
         
-        // setTimeout(()=>setLoading(true),6000); 
-        setTimeout(()=>setLoading(true),500); 
+        setTimeout(()=>setLoading(true),6000); 
+        // setTimeout(()=>setLoading(true),500); 
+
+        
+
         // テキストを表示し続ける
         while (c && c.next) {
           c.animate = (now, u) => {
@@ -142,23 +96,26 @@ export const Body = () => {
           };
           c = c.next;
         }
+        
       },
       // データリセット
       onPlay: () =>{
         setChar("")
       },
+
       // シークバーをユーザーが触ったとき
       onSeek:()=>{
         const position = p.timer.position;
         const chorus = p.findChorus(position);
+        // サビかどうか
         if(chorus){
             setSegment(true)
-            console.log("b");
         }else{
           setSegment(false)
         }
       },
 
+      // 定期的に実行される
       onThrottledTimeUpdate:()=>{
         const position = p.timer.position;
         const chorus = p.findChorus(position);
@@ -168,23 +125,41 @@ export const Body = () => {
         }else{
           setSegment(false)
         }
-      // 歌詞かどうか
+      // 歌っているかどうか
         if(position >= p.video.firstPhrase.startTime){
           setStart(true)
         }else{
           setStart(false)
         }
+
+        // ↓もっとスマートにできそう
+        // 歓声（初め）
+        if(p.timer.position >= p.video.startTime-1000){
+          setCheerstart(true)
+        }
+        // 歓声（終わり）
+        if(p.timer.position >= p.video.endTime-1500){
+          console.log("aaa");
+          setCheerend(true)
+        }       
       },
 
       
     };
+    // キーを押したとき
+    document.addEventListener('keypress', keypress_ivent);
+    function keypress_ivent(e){
+    if(e.key =="q"){
+      const music = new Audio('musics/music.mp3');
+      music.play();
+    }
+  }
+  
     
     // イベントリスナを登録する
     p.addListener(playerListener);
-
     setPlayer(p);
 
- 
     return () => {
       console.log("--- [app] shutdown ---");
       
@@ -192,8 +167,8 @@ export const Body = () => {
       p.dispose();
     };
   }, [mediaElement]);
-
-
+  
+  // ペンライトの数
   const ChangePenlight = () =>{
     setPenlight(penlight + 1)
     
@@ -202,10 +177,11 @@ export const Body = () => {
     }
   }
 
-
+// ペンライトの色
   const Change_color=(e)=>{
     setColor(e.target.value)
   } 
+
   
   return (
     <>
@@ -222,12 +198,33 @@ export const Body = () => {
         </div>
       )}
 
-        {/* ロード後 */}
+    {/* 歓声（初め） */}
+      {cheerstart &&(
+        <> 
+        <audio autoPlay={true}>
+          <source src="/img/Cheers.mp3"/>
+        </audio>
+        </>
+      )
+      }
+
+    {/* 歓声（終わり */}  
+      {cheerend &&(
+        <> 
+        <audio autoPlay={true}>
+          <source src="/img/Cheers.mp3"/>
+        </audio>
+        </>
+      )
+      }
+
+    {/* ロード後 */}
       {player && app && (
         
         <div className={visible ? "controls visible":"controls invisible"} >
             <PlayerControl disabled={app.managed} player={player} setStop={setStop}/>
         </div>
+        
       )}
       <Button className="panel" onClick={()=>{setVisible(!visible)} } icon={visible ? "angle up":"angle down"} size="tiny"></Button>
       <Button icon="magic"size="small" className="penlight" onClick={ChangePenlight}/>
@@ -242,20 +239,19 @@ export const Body = () => {
       <div
         className="wrapper"
       >
-        { stopsong ||( 
+
+        {/* 曲停止中の処理 */}
+        {/* { stopsong ||( 
           <div className="stop">
             Stop...
           </div>
           )
-        }
-      </div>
-      
-      {div}
-      {/* <img src="./img/miku.png" className="miku"/> */}
-      <Three char={char} segment={segment} penlight={penlight} penlight_color={penlight_color} startlylic={startlylic}/>
+        } */}
 
-      {/* <Models/> */}
-      {/* <Screen/> */}
+      </div>
+
+      {div}
+      <Three char={char} segment={segment} penlight={penlight} penlight_color={penlight_color} startlylic={startlylic}/>
     </>
   );
 };

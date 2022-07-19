@@ -22,7 +22,7 @@ export default function Model({ ...props }) {
   return (
     <group ref={ref} {...props} dispose={null}>
       <group name="Scene">
-        <mesh name="球002" castShadow receiveShadow geometry={nodes.球002.geometry} material={nodes.球002.material} position={[-0.27, 1.13, -0.84]} rotation={[0, 0, 0.17]} scale={[0.25, 0.22, 0.25]} />
+        <mesh name="球002" castShadow receiveShadow geometry={nodes.球002.geometry} material={nodes.球002.material} position={[-0.27, 1.13, -0.84]} rotation={[0, 0, 0.17]} scale={[0.25, 0.22, 0.25]}/>
         <group name="球001" position={[0.27, 1.1, -0.84]} rotation={[Math.PI / 2, 0, -0.63]} scale={0.24}>
           <mesh name="球002_1" castShadow receiveShadow geometry={nodes.球002_1.geometry} material={materials.eye_big} />
           <mesh name="球002_2" castShadow receiveShadow geometry={nodes.球002_2.geometry} material={materials.eye} />
