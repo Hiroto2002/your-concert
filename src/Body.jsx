@@ -52,7 +52,7 @@ export const Body = () => {
           console.log("--- [app] initialized as TextAlive app ---");
           console.log("managed:", app.managed);
           console.log("host:", app.host);
-          console.log("song url:", app.songUrl)
+          console.log("song url:", app.songUrl);
 
           if (!app.managed) {
             // Loading Memories / せきこみごはん feat. 初音ミク
@@ -119,12 +119,12 @@ export const Body = () => {
       onThrottledTimeUpdate:()=>{
         const position = p.timer.position;
         const chorus = p.findChorus(position);
-      // サビかどうか
         if(chorus){
             setSegment(true)
         }else{
           setSegment(false)
         }
+
       // 歌っているかどうか
         if(position >= p.video.firstPhrase.startTime){
           setStart(true)
@@ -139,23 +139,14 @@ export const Body = () => {
         }
         // 歓声（終わり）
         if(p.timer.position >= p.video.endTime-1500){
-          console.log("aaa");
           setCheerend(true)
         }       
       },
 
       
     };
-    // キーを押したとき
-    document.addEventListener('keypress', keypress_ivent);
-    function keypress_ivent(e){
-    if(e.key =="q"){
-      const music = new Audio('musics/music.mp3');
-      music.play();
-    }
-  }
-  
     
+  
     // イベントリスナを登録する
     p.addListener(playerListener);
     setPlayer(p);
@@ -224,7 +215,6 @@ export const Body = () => {
         <div className={visible ? "controls visible":"controls invisible"} >
             <PlayerControl disabled={app.managed} player={player} setStop={setStop}/>
         </div>
-        
       )}
       <Button className="panel" onClick={()=>{setVisible(!visible)} } icon={visible ? "angle up":"angle down"} size="tiny"></Button>
       <Button icon="magic"size="small" className="penlight" onClick={ChangePenlight}/>
@@ -251,7 +241,9 @@ export const Body = () => {
       </div>
 
       {div}
-      <Three char={char} segment={segment} penlight={penlight} penlight_color={penlight_color} startlylic={startlylic}/>
+      <Three char={char} segment={segment} penlight={penlight} 
+      penlight_color={penlight_color} startlylic={startlylic}
+      cheerstart={cheerstart}/>
     </>
   );
 };
