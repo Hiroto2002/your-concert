@@ -34,7 +34,7 @@ export default function Models({segment}) {
             <Suspense fallback={null}>
                 <mesh ref={ref}>
                 <Model position={[0,-0.13,9]} rotation={[0,0,0]} scale={0.02}/>     
-                </mesh>  
+                </mesh>
             </Suspense>
         </>
         )   

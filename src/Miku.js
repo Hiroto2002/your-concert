@@ -6,22 +6,24 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 
 export default function Model({ ...props }) {
   const { nodes, materials, animations } = useGLTF('/model/miku.glb')
-  // const { actions } = useAnimations(animations, group)
   const { ref, actions, names } = useAnimations(animations)
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
     // Reset and fade in animation after an index has been changed
-    actions[names[index]].reset().fadeIn(0.5).play()
-    actions[names[index+1]].reset().fadeIn(0.5).play()
-    actions[names[index+2]].reset().fadeIn(0.5).play()
+    actions[names[index]].play()
+    actions[names[index+1]].play()
+    actions[names[index+2]].play()
+    actions[names[index+4]].play()
+    actions[names[index+5]].play()
+    actions[names[index+6]].play()
+    actions[names[index+7]].play()
+    actions[names[index+8]].play()
+    actions[names[index+9]].play()
+
+    // 右手
     actions[names[index+3]].reset().fadeIn(0.5).play()
-    actions[names[index+4]].reset().fadeIn(0.5).play()
-    actions[names[index+5]].reset().fadeIn(0.5).play()
-    actions[names[index+6]].reset().fadeIn(0.5).play()
-    actions[names[index+7]].reset().fadeIn(0.5).play()
-    actions[names[index+8]].reset().fadeIn(0.5).play()
-    actions[names[index+9]].reset().fadeIn(0.5).play()
+    // 左手
     actions[names[index+10]].reset().fadeIn(0.5).play()
 
     // In the clean-up phase, fade it out
