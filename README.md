@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# あなただけのコンサート
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 初音ミク「マジカルミライ」10th Anniversaryプログラミング・コンテスト(https://magicalmirai.com/10th/procon/)応募作品
 
-## Available Scripts
+いつでもどこでも**あなただけ**のコンサートが楽しめます.
 
-In the project directory, you can run:
+## 内容
 
-### `npm start`
+このアプリはオンラインライブやLIVEDVDよりもっと気軽に、いつでもどこでもライブを楽しんでいただけます。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+中心の下部にある緑の棒付近でカーソルを上下に動かすと会場でペンライトを振っているような気持ちになり、よりライブ感を味わっていただけます。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+初音ミクはBlenderで作成しました。表情や動きにご注目ください。
 
-### `npm test`
+### 初期画面
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 主要ライブラリ
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+React three fiber
+React three drei
+TextAlive App API
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## TextAlive App API
 
-### `npm run eject`
+![TextAlive](https://i.gyazo.com/thumb/1000/5301e6f642d255c5cfff98e049b6d1f3-png.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+TextAlive App API は、音楽に合わせてタイミングよく歌詞が動くWebアプリケーション（リリックアプリ）を開発できるJavaScript用のライブラリです。
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+TextAlive App API について詳しくはWebサイト [TextAlive for Developers](https://developer.textalive.jp/) をご覧ください。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## クレジット
+-  Miku 3Dmodel : [すず]()
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 注意事項
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+画像素材の改変，二次配布は固く禁じます.
