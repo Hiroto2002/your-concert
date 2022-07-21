@@ -10,7 +10,8 @@ import LineAnimation from './Line'
 import Screen from './Screen'
 import Effects from './Effects'
 
-export default function Three({char,segment,penlight,penlight_color,startlylic,cheerstart}) {
+export default function Three({char,segment,penlight,penlight_color,
+                              startlylic,cheerstart,loading,setModel}) {
   
   return (
     <div id="canvas-container">
@@ -19,7 +20,7 @@ export default function Three({char,segment,penlight,penlight_color,startlylic,c
         <directionalLight position={[0, 0, 5]} intensity={0.23} />
         <Spotlight segment={segment}/>
         <Screen   position={[0,1.5,-1]} scale={[15, 3, -1]} char={char}/>
-        <Models segment={segment} cheerstart={cheerstart}/>
+        <Models segment={segment} cheerstart={cheerstart} loading={loading} setModel={setModel}/>
         <Otherpenlight segment={segment}/>
         <LineAnimation startlylic={startlylic} segment={segment}/>
         <Penlights penlight={penlight} penlight_color={penlight_color} />

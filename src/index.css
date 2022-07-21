@@ -18,9 +18,7 @@ body {
 
 .wrapper .char {
   font-weight: bold;
-  /* font-family: "Hiragino Kaku Gothic Pro", "游ゴシック体", "Yu Gothic", YuGothic,
-    Meiryo, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif; */
-    z-index: 99;
+  z-index: 99;
 }
 .invisible{
   display: none;
@@ -72,14 +70,6 @@ body {
   z-index: 100;
 }
 
-.stop{
-  position: absolute;
-  z-index: 99;
-}
-.stop img{
-  width: 100px;
-}
-
 #canvas-container{
   position: absolute;
   width: 100%;
@@ -88,12 +78,6 @@ body {
 
 #canvas-container div{
   z-index: 15;
-}
-
-.miku{
-  position: absolute;
-  z-index: 100;
-  width: 100px;
 }
 
 #model_container div{
@@ -117,16 +101,6 @@ body {
   height: 33px;
   box-shadow: 0px 0px 2px #fff;
 }
-.penlights{
-  font-size: 20rem;
-  position: relative;
-  color: #ff007f;
-  text-shadow: 0px 0px 20px  #f689c0;
-  font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
-  z-index: 0;
-}
-
-
 
 
 

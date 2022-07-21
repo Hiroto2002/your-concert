@@ -24,6 +24,8 @@ export const Body = () => {
     const[startlylic,setStart]=useState(false);
     const[cheerstart,setCheerstart]=useState(false);
     const[cheerend,setCheerend]=useState(false);
+    const [model_complete,setModel]= useState("none")
+
     
 //   同じ結果を返す処理はメモ化してパフォーマンスを上げる
   const div = useMemo(() => <div className="media" ref={setMediaElement} />, []);
@@ -128,8 +130,6 @@ export const Body = () => {
       // 歌っているかどうか
         if(position >= p.video.firstPhrase.startTime){
           setStart(true)
-        }else{
-          setStart(false)
         }
 
         // ↓もっとスマートにできそう
@@ -174,6 +174,8 @@ export const Body = () => {
   } 
 
   
+
+  
   return (
     <>
         {/* ロード中 */}
@@ -181,7 +183,7 @@ export const Body = () => {
         <div style={{width:"100%",position:"fixed",zIndex:"999",background:"black"}}>
         <video autoPlay={true} muted={true} style={{width:"100%",transform: "translate(0%, -18%)"}}>
 
-        <source src="/img/loading.mp4"
+        <source src="/assets/loading.mp4"
           type="video/mp4"/>
 
         Sorry, your browser doesn't support embedded videos.
@@ -193,7 +195,7 @@ export const Body = () => {
       {cheerstart &&(
         <> 
         <audio autoPlay={true}>
-          <source src="/img/Cheers.mp3"/>
+          <source src="/assets/Cheers.mp3"/>
         </audio>
         </>
       )
@@ -203,7 +205,7 @@ export const Body = () => {
       {cheerend &&(
         <> 
         <audio autoPlay={true}>
-          <source src="/img/Cheers.mp3"/>
+          <source src="/assets/Cheers.mp3"/>
         </audio>
         </>
       )
@@ -211,12 +213,14 @@ export const Body = () => {
 
     {/* ロード後 */}
       {player && app && (
-        
-        <div className={visible ? "controls visible":"controls invisible"} >
+          <div className={visible ? "controls visible":"controls invisible"} >
             <PlayerControl disabled={app.managed} player={player} setStop={setStop}/>
-        </div>
+          </div>
+
       )}
-      <Button className="panel" onClick={()=>{setVisible(!visible)} } icon={visible ? "angle up":"angle down"} size="tiny"></Button>
+      <div style={{display:model_complete}}>
+        <Button className="panel" onClick={()=>{setVisible(!visible)} } icon={visible ? "angle up":"angle down"} size="tiny"></Button>
+      </div>
       <Button icon="magic"size="small" className="penlight" onClick={ChangePenlight}/>
       {penlight >= 1 ?
         <div className="palette_design" style={{background:penlight_color}}>
@@ -243,7 +247,7 @@ export const Body = () => {
       {div}
       <Three char={char} segment={segment} penlight={penlight} 
       penlight_color={penlight_color} startlylic={startlylic}
-      cheerstart={cheerstart}/>
+      cheerstart={cheerstart} loading={loading} setModel={setModel}/>
     </>
   );
 };

@@ -15,6 +15,7 @@ export default function LineAnimation({startlylic,segment}) {
     if(startlylic){
     return(
     <>
+    {/* 歌詞背景 */}
         <Line
             points={[
                 [-15, 2, -4],
@@ -23,8 +24,8 @@ export default function LineAnimation({startlylic,segment}) {
             color="#000" scale={1} lineWidth={70}
         />
 
-            {/* 1 */}
-                <Line
+        {/* 1 */}
+        <Line
             points={[
                 [-1, 0, 0],
                 [-1, 2, 0],
@@ -32,7 +33,7 @@ export default function LineAnimation({startlylic,segment}) {
                 [1, 0, 0],
                 [-1, 0, 0],
                 ]} 
-            color="rgb(6,219,217)" dashed dashSize={v * 3} gapSize={9 - v * 9} 
+            color={segment?"rgb(247,2,145)":"rgb(6,219,217)"} dashed dashSize={v * 3} gapSize={9 - v * 9} 
             scale={2} position={[-14,0,-5]} lineWidth={3} rotation={[0,Math.PI,0]}
         />
         <Line
@@ -43,7 +44,7 @@ export default function LineAnimation({startlylic,segment}) {
                 [1, 0, 0],
                 [-1, 0, 0],
             ]}
-            color="rgb(247,2,145)" dashed dashSize={v*3} gapSize={9 - v * 9} 
+           color={segment?"rgb(6,219,217)":"rgb(247,2,145)"} dashed dashSize={v*3} gapSize={9 - v * 9} 
             scale={3} position={[-14,-1,-5]} lineWidth={2}
         />
 
@@ -56,7 +57,7 @@ export default function LineAnimation({startlylic,segment}) {
                 [1, 0, 0],
                 [-1, 0, 0],
                 ]} 
-            color="rgb(247,2,145)" dashed dashSize={v * 3} gapSize={9 - v * 9} 
+           color={segment?"rgb(6,219,217)":"rgb(247,2,145)"} dashed dashSize={v * 3} gapSize={9 - v * 9} 
             scale={2} position={[-7,0,-5]} lineWidth={3} rotation={[0,Math.PI,0]}
         />
         <Line
@@ -67,14 +68,14 @@ export default function LineAnimation({startlylic,segment}) {
                 [1, 0, 0],
                 [-1, 0, 0],
             ]}
-            color="rgb(6,219,217)" dashed dashSize={v*3} gapSize={9 - v * 9} 
+           color={segment?"rgb(247,2,145)":"rgb(6,219,217)"} dashed dashSize={v*3} gapSize={9 - v * 9} 
             scale={3} position={[-7,-1,-5]} lineWidth={2}
         />
 
 
 
-                {/* 真ん中 */}
-                <Line
+        {/* 真ん中 3*/}
+        <Line
             points={[
                 [-1, 0, 0],
                 [-1, 2, 0],
@@ -82,7 +83,7 @@ export default function LineAnimation({startlylic,segment}) {
                 [1, 0, 0],
                 [-1, 0, 0],
                 ]} 
-            color="rgb(6,219,217)" dashed dashSize={v * 3} gapSize={9 - v * 9} 
+           color={segment?"rgb(247,2,145)":"rgb(6,219,217)"} dashed dashSize={v * 3} gapSize={9 - v * 9} 
             scale={2} position={[0,0,-5]} lineWidth={3} rotation={[0,Math.PI,0]}
         />
         <Line
@@ -93,11 +94,11 @@ export default function LineAnimation({startlylic,segment}) {
                 [1, 0, 0],
                 [-1, 0, 0],
             ]}
-            color="rgb(247,2,145)" dashed dashSize={v*3} gapSize={9 - v * 9} 
+           color={segment?"rgb(6,219,217)":"rgb(247,2,145)"} dashed dashSize={v*3} gapSize={9 - v * 9} 
             scale={3} position={[0,-1,-5]} lineWidth={2}
         />
 
-            {/* 4 */}
+        {/* 4 */}
         <Line
             points={[
                 [-1, 0, 0],
@@ -106,7 +107,7 @@ export default function LineAnimation({startlylic,segment}) {
                 [1, 0, 0],
                 [-1, 0, 0],
                 ]} 
-            color="rgb(247,2,145)" dashed dashSize={v * 3} gapSize={9 - v * 9} 
+           color={segment?"rgb(6,219,217)":"rgb(247,2,145)"} dashed dashSize={v * 3} gapSize={9 - v * 9} 
             scale={2} position={[7,0,-5]} lineWidth={3} rotation={[0,Math.PI,0]}
         />
         <Line
@@ -117,10 +118,11 @@ export default function LineAnimation({startlylic,segment}) {
                 [1, 0, 0],
                 [-1, 0, 0],
             ]}
-            color="rgb(6,219,217)" dashed dashSize={v*3} gapSize={9 - v * 9} 
+           color={segment?"rgb(247,2,145)":"rgb(6,219,217)"} dashed dashSize={v*3} gapSize={9 - v * 9} 
             scale={3} position={[7,-1,-5]} lineWidth={2}
         />
 
+        {/* 5 */}
         <Line
             points={[
                 [-1, 0, 0],
@@ -129,7 +131,7 @@ export default function LineAnimation({startlylic,segment}) {
                 [1, 0, 0],
                 [-1, 0, 0],
                 ]} 
-            color="rgb(6,219,217)" dashed dashSize={v * 3} gapSize={9 - v * 9} 
+           color={segment?"rgb(247,2,145)":"rgb(6,219,217)"} dashed dashSize={v * 3} gapSize={9 - v * 9} 
             scale={2} position={[14,0,-5]} lineWidth={3} rotation={[0,Math.PI,0]}
         />
         <Line
@@ -140,72 +142,9 @@ export default function LineAnimation({startlylic,segment}) {
                 [1, 0, 0],
                 [-1, 0, 0],
             ]}
-            color="rgb(247,2,145)" dashed dashSize={v*3} gapSize={9 - v * 9} 
+           color={segment?"rgb(6,219,217)":"rgb(247,2,145)"} dashed dashSize={v*3} gapSize={9 - v * 9} 
             scale={3} position={[14,-1,-5]} lineWidth={2}
         />
-
-
-    {/* サビ演出 */}
-        { segment &&(
-        <>
-            {/* <Line
-                points={[
-                    [0, 2, -5],
-                    [c * 10, s * 10, -5],
-                ]}
-                color="rgb(6,219,217)" scale={1} dashed dashSize={0.5} gapSize={9-c*10} lineWidth={2}
-            />
-            <Line
-                points={[
-                    [0, 2, -5],
-                    [c * 5, s * 5, -5],
-                ]}
-                color="rgb(247,2,145)" scale={1} dashed 
-                dashSize={0.5} gapSize={9-c*10}lineWidth={2}
-            />
-            <Line
-                points={[
-                    [0, 2, -5],
-                    [c * 3, s * 3, -5],
-                ]}
-                color="rgb(6,219,217)" scale={1} dashed
-                dashSize={0.5} gapSize={9-c*10} lineWidth={2}
-            />
-            <Line
-                points={[
-                    [0, 2, -5],
-                    [-c * 10, -s * 10, -5],
-                ]}
-                color="rgb(247,2,145)" scale={1} dashed dashSize={0.5} 
-                gapSize={9-c*10} lineWidth={2}
-            />
-            <Line
-            points={[
-                [0, 2, -5],
-                [-c * 5, -s * 5, -5],
-            ]}
-            color="rgb(6,219,217)" scale={1} dashed dashSize={0.5} 
-            gapSize={9-c*10} lineWidth={2}
-            />
-            <Line
-                points={[
-                    [0, 2, -5],
-                    [-c * 3, -s * 3, -5],
-                ]}
-                color="rgb(247,2,145)" scale={1} dashed
-                dashSize={0.5} gapSize={9-c*10} lineWidth={2}
-            /> */}
-            {/* <Line
-            points={[
-                [0, 2, -5],
-                [-c , -s , -5],
-            ]}
-            color="rgb(6,219,217)" scale={1} dashed dashSize={0.5} 
-            gapSize={9-c*10} lineWidth={2}
-            /> */}
-            
-        </>
-        )}
     </>
     )
     }else{
