@@ -1,6 +1,6 @@
 # あなただけのコンサート
 
-## 初音ミク「マジカルミライ」10th Anniversaryプログラミング・コンテスト(https://magicalmirai.com/10th/procon/)応募作品
+## 初音ミク「マジカルミライ」10th Anniversary[プログラミング・コンテスト](https://magicalmirai.com/10th/procon/) 応募作品
 
 いつでもどこでも**あなただけ**のコンサートが楽しめます.
 
