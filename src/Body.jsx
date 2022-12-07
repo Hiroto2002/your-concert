@@ -41,7 +41,7 @@ export const Body = () => {
     const p = new Player({
       app: {
         // トークンは https://developer.textalive.jp/profile で取得したものを使う
-        token: "gToYZLXch4mgq81a",
+        token: process.env.REACT_APP_TEXTALIVE_TOKEN,
       },
       mediaElement,
     });

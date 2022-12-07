@@ -11,12 +11,12 @@ export default function Spotlight({segment}) {
 
     return (
       <>
-        <MovingSpot depthBuffer={depthBuffer} color="#0c8cbf" position={[-9, -1, 1]} attenuation={10} segment={segment}/>
-        <MovingSpot depthBuffer={depthBuffer} color="#42ff00" position={[-6, -1, 1]} attenuation={7} segment={segment}/>
-        <MovingSpot depthBuffer={depthBuffer} color="#0c8cbf" position={[-3, -1, 1]} segment={segment}/>
-        <MovingSpot depthBuffer={depthBuffer} color="#0c8cbf" position={[3, -1, 1]} segment={segment}/>
-        <MovingSpot depthBuffer={depthBuffer} color="#42ff00" position={[6, -1, 1]} attenuation={7} segment={segment}/>
-        <MovingSpot depthBuffer={depthBuffer} color="#0c8cbf" position={[9, -1, 1]} attenuation={10} segment={segment}/>
+        <MovingSpot depthBuffer={depthBuffer} color="rgb(97,245,200)" position={[-9, -1, 1]} attenuation={10} segment={segment}/>
+        <MovingSpot depthBuffer={depthBuffer} color="rgb(243,98,238)" position={[-6, -1, 1]} attenuation={7} segment={segment}/>
+        <MovingSpot depthBuffer={depthBuffer} color="rgb(97,245,200)" position={[-3, -1, 1]} segment={segment}/>
+        <MovingSpot depthBuffer={depthBuffer} color="rgb(97,245,200)" position={[3, -1, 1]} segment={segment}/>
+        <MovingSpot depthBuffer={depthBuffer} color="rgb(243,98,238)" position={[6, -1, 1]} attenuation={7} segment={segment}/>
+        <MovingSpot depthBuffer={depthBuffer} color="rgb(97,245,200)" position={[9, -1, 1]} attenuation={10} segment={segment}/>
       </>
     )
 }
